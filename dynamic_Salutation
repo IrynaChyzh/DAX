@@ -1,0 +1,8 @@
+Salutation = 
+VAR h = HOUR(NOW())
+VAR salutation =  SWITCH(TRUE(),
+h>=0 && h<5, "Good Night",
+h>=5 && h<12, "Good Morning",
+h>=12 && h<18, "Good Afternoon",
+h>=18 && h<=24, "Good Evening")
+RETURN salutation&" "& "HR Team"
