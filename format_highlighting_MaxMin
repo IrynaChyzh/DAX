@@ -1,0 +1,13 @@
+MaxMin = 
+VAR sales = [Total Sales]
+VAR MaxSales = MAXX(
+    ALLSELECTED('dimDates'[Year], 'dimDates'[Quarter]), 
+    CALCULATE([Total Sales]))
+VAR MinSales = MINX(
+    ALLSELECTED('dimDates'[Year], 'dimDates'[Quarter]), 
+    CALCULATE([Total Sales]))
+VAR result = SWITCH(
+    TRUE(),
+    Sales = MaxSales, "green",
+    Sales = MinSales, "red")
+RETURN result
