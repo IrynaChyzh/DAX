@@ -1,0 +1,7 @@
+Y axis Max = 
+VAR SalesMax = MAXX(
+    ALLSELECTED(dimDates[Year],
+    dimDates[Month Of Year]),
+    [Total sales])
+VAR YMax = SalesMax*1.25
+RETURN YMax
