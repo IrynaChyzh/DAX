@@ -1,0 +1,3 @@
+Place for Activity = 
+IF(MOD( SELECTEDVALUE(dimDates[Month-Year]), 2),
+1, -1)
