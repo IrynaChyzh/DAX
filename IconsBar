@@ -1,0 +1,8 @@
+Icons Bar = 
+VAR iconsTotal_q = 10
+VAR iconsFill_q = 'language'[level]
+VAR iconsEmpty_q = iconsTotal_q-iconsFill_q
+VAR iconsFill = "💫"
+VAR iconsEmpty = "🕳"
+VAR bar = REPT(iconsFill, iconsFill_q) & REPT(iconsEmpty, iconsEmpty_q)
+RETURN bar
