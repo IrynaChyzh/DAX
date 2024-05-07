@@ -2,5 +2,41 @@ Place for Activity =
 IF(MOD( SELECTEDVALUE(dimDates[Month-Year]), 2),
 1, -1)
 
-Text Activity = 
- SELECTEDVALUE(Table[Activity])
+Label Activity = 
+VAR activity = SELECTEDVALUE('table'[Activity])
+VAR l = LEN(activity)
+VAR lmax = 30
+VAR result = IF(l > lmax, LEFT(activity, lmax) & "...", activity)
+RETURN result
+
+Place for Month = 
+IF(MOD( SELECTEDVALUE(dimDates[Month-Year]), 2),
+0.25, -0.25)
+
+Label Month =  
+IF( [CurrentPeriod], 
+"x " & SELECTEDVALUE(dimDate[Month],
+SELECTEDVALUE(dimDate[Month])
+
+Line position = 0.05
+
+Place for Marker = 0.1
+
+Label for Marker = 
+IF(not ISBLANK(SELECTEDVALUE('table'[Activity])),"x") x-icon
+
+Place for Year = 
+IF(selectedvalue (dimDte[MonthNumber]) = 1, -0.15)
+
+Label Year =  
+SELECTEDVALUE(dimDate[Year])
+
+
+CurrentPeriod = 
+VAR CurMonth = MONTH(TODAY())
+VAR CurYear = YEAR(TODAY())
+VAR SelMonth = SELECTEDVALUE(dimDates[Month Of Year])
+VAR SelYear = SELECTEDVALUE(dimDates[Year])
+VAR CurPeriod = CurMonth = SelMonth 
+&& CurYear = SelYear
+RETURN CurPeriod
